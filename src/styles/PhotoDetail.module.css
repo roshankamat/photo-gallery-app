@@ -1,0 +1,183 @@
+/* ═══════════════════════════════════════════════════════════
+   PHOTO DETAIL — Full-page photo view
+   ═══════════════════════════════════════════════════════════ */
+.detail {
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 8px 0;
+  margin-bottom: 16px;
+  transition: color var(--transition-fast);
+}
+
+.backBtn:hover {
+  color: var(--text-primary);
+}
+
+/* ── Content layout ────────────────────────────────────── */
+.detailContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.detailImageWrap {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: var(--border-subtle);
+  background: var(--bg-card);
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detailImage {
+  width: 100%;
+  max-height: 520px;
+  object-fit: cover;
+  display: block;
+}
+
+.detailFallbackBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 40px;
+  color: var(--text-secondary);
+  text-align: center;
+  width: 100%;
+  min-height: 340px;
+}
+
+.detailFallbackIcon {
+  font-size: 3rem;
+  opacity: 0.7;
+}
+
+/* ── Info panel ────────────────────────────────────────── */
+.detailInfo {
+  background: var(--bg-card);
+  border: var(--border-subtle);
+  padding: 24px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detailTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.detailCategory {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(124, 58, 237, 0.15);
+  color: var(--accent-2);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  width: fit-content;
+}
+
+.detailDate {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.favoriteToggle {
+  padding: 12px 22px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-card-hover);
+  border: var(--border-subtle);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 8px;
+  transition: all var(--transition-fast);
+  width: fit-content;
+}
+
+.favoriteToggle:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.favoriteToggleActive {
+  background: rgba(255, 77, 109, 0.15);
+  border-color: rgba(255, 77, 109, 0.3);
+  color: var(--color-heart);
+}
+
+.favoriteToggleActive:hover {
+  background: rgba(255, 77, 109, 0.2);
+}
+
+/* ── Not found ─────────────────────────────────────────── */
+.notFound {
+  text-align: center;
+  padding: 48px 0;
+}
+
+.notFound h2 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.notFound p {
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+
+/* ── Skeleton ──────────────────────────────────────────── */
+.detailSkeleton {
+  height: 400px;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    110deg,
+    var(--bg-card) 8%,
+    rgba(255, 255, 255, 0.06) 18%,
+    var(--bg-card) 33%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s linear infinite;
+}
+
+@keyframes shimmer {
+  to { background-position: -200% 0; }
+}
+
+/* ── Responsive: side-by-side on wider screens ─────────── */
+@media (min-width: 768px) {
+  .detailContent {
+    flex-direction: row;
+    gap: 28px;
+  }
+  .detailImageWrap {
+    flex: 1.4;
+  }
+  .detailInfo {
+    flex: 1;
+  }
+}

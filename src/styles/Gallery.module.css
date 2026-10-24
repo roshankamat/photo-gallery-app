@@ -1,0 +1,131 @@
+/* ═══════════════════════════════════════════════════════════
+   GALLERY — Grid, filters, skeleton loading
+   ═══════════════════════════════════════════════════════════ */
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Header ────────────────────────────────────────────── */
+.galleryHeader {
+  text-align: center;
+  padding: 8px 0 12px;
+}
+
+.heading {
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subheading {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin-top: 6px;
+}
+
+/* ── Filter bar ────────────────────────────────────────── */
+.filterBar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.filterBtn {
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  background: var(--bg-card);
+  border: 1px solid var(--bg-glass-border);
+  color: var(--text-secondary);
+  text-transform: capitalize;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.filterBtn:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.filterBtnActive {
+  background: var(--gradient-primary) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.3);
+}
+
+/* ── Photo grid ────────────────────────────────────────── */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* ── Empty state ───────────────────────────────────────── */
+.empty {
+  color: var(--text-muted);
+  font-style: italic;
+  padding: 24px 0;
+  text-align: center;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 48px 0;
+}
+
+.emptyIcon {
+  font-size: 3rem;
+  opacity: 0.3;
+}
+
+/* ── Skeleton loading ──────────────────────────────────── */
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.skeleton {
+  height: 260px;
+  border-radius: var(--radius-md);
+  background: linear-gradient(
+    110deg,
+    var(--bg-card) 8%,
+    rgba(255, 255, 255, 0.06) 18%,
+    var(--bg-card) 33%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s linear infinite;
+}
+
+@keyframes shimmer {
+  to { background-position: -200% 0; }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 1.5rem;
+  }
+  .grid,
+  .skeletonGrid {
+    grid-template-columns: 1fr;
+  }
+}
